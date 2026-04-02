@@ -1,0 +1,5 @@
+@EndUserText.label: 'Serviço'
+define service ZUI_VOOS_API {
+  expose ZCE_VOOS_API   as FlightHeader;
+  expose ZCE_VOOS_ITEMS as FlightItems;
+}
