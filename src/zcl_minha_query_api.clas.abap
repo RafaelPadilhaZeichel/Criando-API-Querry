@@ -17,10 +17,8 @@ CLASS zcl_minha_query_api IMPLEMENTATION.
 
   METHOD if_rap_query_provider~select.
 
-    " 1. Identifica qual entidade está sendo chamada
     DATA(lv_entity_id) = io_request->get_entity_id( ).
 
-    " 2. Recupera Filtros e Paginação (comuns a ambas)
     TRY.
         DATA(lv_sql_filter) = io_request->get_filter( )->get_as_sql_string( ).
       CATCH cx_rap_query_filter_no_range.
@@ -34,12 +32,8 @@ CLASS zcl_minha_query_api IMPLEMENTATION.
       lv_top = 100.
     ENDIF.
 
-    " 3. O "Dispatcher" (Direcionador)
     CASE lv_entity_id.
 
-        " ==========================================================
-        " CASO 1: CABEÇALHO (Pai)
-        " ==========================================================
       WHEN 'ZCE_VOOS_API'.
         DATA lt_header TYPE STANDARD TABLE OF zce_voos_api.
 
@@ -67,9 +61,6 @@ CLASS zcl_minha_query_api IMPLEMENTATION.
           io_response->set_total_number_of_records( lv_count_h ).
         ENDIF.
 
-        " ==========================================================
-        " CASO 2: ITENS (Filho)
-        " ==========================================================
       WHEN 'ZCE_VOOS_ITEMS'.
         DATA lt_items TYPE STANDARD TABLE OF zce_voos_items.
 
