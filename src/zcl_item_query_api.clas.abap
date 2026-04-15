@@ -14,7 +14,7 @@ ENDCLASS.
 CLASS zcl_item_query_api IMPLEMENTATION.
 
   METHOD if_rap_query_provider~select.
-    DATA lt_items TYPE STANDARD TABLE OF zce_voos_items. " Sua Custom Entity de Item
+    DATA lt_items TYPE STANDARD TABLE OF zce_voos_items.
 
     TRY.
         DATA(lv_sql_filter) = io_request->get_filter( )->get_as_sql_string( ).
