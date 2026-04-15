@@ -33,7 +33,7 @@ CLASS zcl_item_query_api IMPLEMENTATION.
              booking_id    AS PassengerId,
              customer_id   AS CustomerId
         FROM /dmo/booking
-        WHERE (lv_sql_filter) " Aqui o filtro garante que só venham itens desse voo específico
+        WHERE (lv_sql_filter)
         INTO CORRESPONDING FIELDS OF TABLE @lt_items.
 
       io_response->set_data( lt_items ).
